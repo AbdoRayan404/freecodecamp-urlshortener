@@ -40,6 +40,14 @@ app.post('/api/shorturl', (req, res)=>{
   }
 })
 
+app.get('/api/shorturl/:number', (req, res) =>{
+  if(shortened[req.params.number]){
+    res.redirect(shortened[req.params.number])
+  }else{
+    res.json({"error":"No short URL found for the given input"})
+  }
+})
+
 app.listen(port, function() {
   console.log(`Listening on port ${port}`);
 });
